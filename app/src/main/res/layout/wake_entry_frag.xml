@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/eMac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/macAddress"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/eIp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/ip"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/ePort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/port"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/eName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:inputType="text" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/eTriggerSsid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/triggerSsid"
+            android:inputType="text" />
+
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+    		android:orientation="horizontal"
+    		android:layout_alignParentRight="true"
+    		android:layout_alignBottom="@id/eTriggerSsid"
+    		android:layout_alignTop="@id/eTriggerSsid" >
+
+            <ImageButton
+                android:id="@+id/bSsid"
+                android:layout_width="52dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:contentDescription="@string/getCurrent"
+                android:src="@drawable/ic_action_network_wifi" />
+
+            <ImageButton
+                android:id="@+id/bHelpTrigger"
+                android:layout_width="52dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:contentDescription="@string/help"
+                android:src="@drawable/ic_action_help" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

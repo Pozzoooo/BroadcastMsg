@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/shortMargin"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/lMsg"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:text="@string/helpMsg" />
+
+    <TextView
+        android:id="@+id/lLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/helpLink" />
+
+    <Button
+        android:id="@+id/bClose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/buttonBarButtonStyle"
+        android:text="@string/close" />
+
+</LinearLayout>

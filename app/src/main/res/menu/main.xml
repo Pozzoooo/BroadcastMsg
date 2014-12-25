@@ -1,0 +1,37 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/mActionSearch"
+        android:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/ic_action_search"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:title="@string/search"/>
+    <item
+        android:id="@+id/add"
+        android:icon="@drawable/ic_add"
+        android:onClick="onAdd"
+        android:showAsAction="always"
+        android:title="@string/add"/>
+<!--     <item -->
+<!--         android:id="@+id/sort" -->
+<!--         android:icon="@android:drawable/ic_menu_sort_alphabetically" -->
+<!--         android:onClick="onSort" -->
+<!--         android:showAsAction="ifRoom" -->
+<!--         android:title="@string/sort" /> -->
+    <item
+        android:id="@+id/showDeletedList"
+        android:icon="@drawable/ic_action_unread"
+        android:onClick="onShowDeletedList"
+        android:showAsAction="never"
+        android:title="@string/deletedList"/>
+    <item
+        android:id="@+id/showLogList"
+        android:onClick="onShowLogList"
+        android:showAsAction="never"
+        android:title="@string/logList"/>
+    <item
+        android:id="@+id/help"
+        android:icon="@drawable/ic_action_help"
+        android:onClick="onHelp"
+        android:showAsAction="never"
+        android:title="@string/help"/>
+</menu>

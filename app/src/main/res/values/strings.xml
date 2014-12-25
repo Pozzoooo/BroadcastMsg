@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">Wake On Lan</string>
+    <string name="example">Example</string>
+    <string name="wake">Wake</string>
+    <string name="add">Add</string>
+    <string name="done">Done</string>
+    <string name="discard">Cancel</string>
+    <string name="arrow">Arrow</string>
+    <string name="welcome">Welcome</string>
+    <string name="help">Help</string>
+    <string name="close">Close</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="search">Search</string>
+    <string name="recover">Recover</string>
+    <string name="gong">Gong</string>
+    <string name="clear">Clear</string>
+    <string name="sort">Sort</string>
+
+    <string name="getCurrent">Get current network name</string>
+    <string name="deletedList">List deleted items</string>
+    <string name="wakeSentTo">Package sent to\u0020</string>
+    <string name="logList">Log list</string>
+
+    <string name="actionReplaced">replaced</string>
+    <string name="actionSent">sent</string>
+    <string name="actionDeleted">deleted</string>
+    <string name="actionTrashed">trashed</string>
+    <string name="actionNewHomeWidget">new home widget</string>
+    <string name="actionNewLockWidget">new lock widget</string>
+
+    <string name="howDefaul">default</string>
+    <string name="howWidgetHome">home widget</string>
+    <string name="howTrigged">trigged</string>
+
+<!--     Tutorial messages -->
+    <string name="tutoCreate">Use this button to create a new entry</string>
+    <string name="tutoWake">Just touch an entry to sent a new Magic Package</string>
+    <string name="tutoEditWake">Use long touch for more options</string>
+    <string name="tutoHelp">The question mark will help you with more information</string>
+
+<!--     Errors msg -->
+    <string name="macNotValid">Given MAC is not valid, pleas review</string>
+    <string name="ioSentError">Problem while sending message, are you connected?</string>
+    <string name="valuesError">Error on evaluation, are your data correct?</string>
+    <string name="cantGetSsid">Could no get current ssid</string>
+
+<!--     Labels -->
+    <string name="yourIp">Your IP</string>
+    <string name="ip">IP</string>
+    <string name="name">Name</string>
+    <string name="port">Port</string>
+    <string name="netBroadcast">Broadcast</string>
+    <string name="macAddress">MAC Address</string>
+    <string name="triggerSsid">Trigger on network</string>
+
+<!--     Help -->
+	<string name="helpMsg">You need to pre-configure desired machine(s) to 
+	    make it work (wake), there is an option on Setup (BIOS) and another
+	    on you SO.
+	    Take a look at link for more details.</string>
+	<string name="helpTrigger">Name of a network which will trigger (when connected) current wake message, or empty for no trigger.</string>
+	<string name="helpLink"><a href="http://windows7-issues.blogspot.com.br/2011/03/wake-on-lan-wol-for-windows-7-made-easy.html">Windows</a></string>
+</resources>

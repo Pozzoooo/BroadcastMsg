@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical" >
+
+    <com.pozzo.broadcast.components.LabeldTextView
+        android:id="@+id/lIp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/yourIp"
+        style="@style/textView" />
+
+    <com.pozzo.broadcast.components.LabeldTextView
+        android:id="@+id/lBroadcast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/netBroadcast"
+        style="@style/textView" />
+
+</LinearLayout>

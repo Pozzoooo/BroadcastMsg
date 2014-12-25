@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/mActionSearch"
+        android:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/ic_action_search"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:title="@string/search"/>
+    <item
+        android:id="@+id/mClear"
+        android:showAsAction="never"
+        android:onClick="onClear"
+        android:title="@string/clear" />
+
+</menu>

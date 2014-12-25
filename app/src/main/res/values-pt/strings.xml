@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">Wake On Lan</string>
+    <string name="example">Examplo</string>
+    <string name="wake">Acordar</string>
+    <string name="add">Adicionar</string>
+    <string name="done">Salvar</string>
+    <string name="discard">Cancelar</string>
+    <string name="arrow">Flecha</string>
+    <string name="welcome">Bem Vindo</string>
+    <string name="help">Ajuda</string>
+    <string name="close">Fechar</string>
+    <string name="delete">Remover</string>
+    <string name="edit">Editar</string>
+    <string name="search">Buscar</string>
+    <string name="recover">Recuperar</string>
+    <string name="gong">Gongo</string>
+    <string name="clear">Limpar</string>
+    <string name="sort">Ordenar</string>
+
+    <string name="getCurrent">Buscar atual</string>
+    <string name="deletedList">Listar removidos</string>
+    <string name="wakeSentTo">Pacote enviado para\u0020</string>
+    <string name="logList">Listar logs</string>
+
+    <string name="actionReplaced">novo/editado</string>
+    <string name="actionSent">enviado</string>
+    <string name="actionDeleted">removido</string>
+    <string name="actionTrashed">lixeira</string>
+    <string name="actionNewHomeWidget">novo widget</string>
+    <string name="actionNewLockWidget">novo widget lock</string>
+
+    <string name="howDefaul">default</string>
+    <string name="howWidgetHome">home widget</string>
+    <string name="howTrigged">trigged</string>
+
+<!--     Tutorial messages -->
+    <string name="tutoCreate">Para criar novos registros utilize este botão</string>
+    <string name="tutoWake">Para enviar o pacote mágico, apenas toque a linha desejada</string>
+    <string name="tutoEditWake">Para mais funcionalidades a entrada criada, de um toque longo na linha desejada</string>
+    <string name="tutoHelp">Se precisar de mais ajuda, pode utilizar o menu de ajuda</string>
+    
+<!--     Mensagens de erro -->
+    <string name="macNotValid">Mac não válido, por favor verifique</string>
+    <string name="ioSentError">Dificuldades no envio da mensagem, você esta conectado?</string>
+    <string name="valuesError">Erro ao criar mensagem, os dados estão corretos?</string>
+    <string name="cantGetSsid">Não foi possível pegar o nome da rede atual</string>
+
+<!--     Labels -->
+    <string name="yourIp">Seu IP</string>
+    <string name="ip">IP</string>
+    <string name="name">Nome</string>
+    <string name="port">Porta</string>
+    <string name="netBroadcast">Broadcast</string>
+    <string name="macAddress">Mac Address</string>
+    <string name="triggerSsid">Disparar ao acessar</string>
+
+<!--     Help -->
+	<string name="helpMsg">Para que o aplicativo funcione, é preciso que seja previamente 
+	    configurado a máquina, ativando no Setup (BIOS) e configuração do SO.
+	    Mais detalhes no link.</string>
+	    <string name="helpTrigger">Nome da rede em que será disparada a mensagem ao se conectar, ou vazio para ignorar.</string>
+</resources>

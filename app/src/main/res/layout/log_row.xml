@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/row" >
+
+	<TextView 
+	    android:id="@+id/lAction"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:text="@string/example" />
+
+	<TextView 
+	    android:id="@+id/lHow"
+	    android:layout_width="0dp"
+	    android:layout_height="wrap_content"
+	    android:gravity="right"
+	    android:layout_alignParentRight="true"
+	    android:layout_toRightOf="@id/lAction"
+	    android:text="@string/example" />
+
+	<TextView 
+	    android:id="@+id/lWakeEntryName"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@id/lAction"
+	    android:text="@string/example" />
+
+	<TextView 
+	    android:id="@+id/lDescription"
+	    android:layout_width="0dp"
+	    android:layout_height="wrap_content"
+	    android:layout_toRightOf="@id/lWakeEntryName"
+	    android:layout_toLeftOf="@+id/lDate"
+	    android:layout_below="@id/lAction"
+	    android:paddingLeft="@dimen/shortMargin"
+	    android:paddingRight="@dimen/shortMargin"
+	    android:ellipsize="end"
+	    android:singleLine="true"
+	    android:text="@string/example" />
+
+	<TextView 
+	    android:id="@id/lDate"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:gravity="right"
+	    android:layout_alignParentRight="true"
+	    android:layout_below="@id/lAction"
+	    android:text="@string/example" />
+</RelativeLayout>

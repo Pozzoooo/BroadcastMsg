@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="animShort">300</string>
+    <string name="readTime">4000</string>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="shortMargin">7dp</dimen>
+    <dimen name="separatorSize">1dp</dimen>
+
+    <dimen name="minButtonSize">48dp</dimen>
+</resources>

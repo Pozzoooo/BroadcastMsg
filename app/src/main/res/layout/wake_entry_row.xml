@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/row"
+    android:background="?android:attr/activatedBackgroundIndicator"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/lName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="@string/example"
+        style="@style/rowLabel" />
+
+    <TextView 
+        android:id="@+id/lLastSent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/lWolCount"
+        android:layout_toRightOf="@id/lName"
+        android:gravity="right"
+        android:text="@string/example"
+        style="@style/rowLabel" />
+
+    <TextView
+        android:id="@id/lWolCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/shortMargin"
+        android:layout_marginRight="@dimen/shortMargin"
+        android:layout_alignParentRight="true"
+        android:text="@string/example"
+        style="@style/rowLabel" />
+
+    <TextView
+        android:id="@+id/lMacAddr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/lName"
+        android:text="@string/example"
+        style="@style/rowLabel" />
+
+    <TextView
+        android:id="@+id/lAddr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_below="@id/lName"
+        android:layout_toLeftOf="@+id/iTrigger"
+        android:layout_toRightOf="@id/lMacAddr"
+        android:text="@string/example"
+        style="@style/rowLabel" />
+
+    <ImageView 
+        android:id="@+id/iTrigger"
+        android:layout_width="32dp"
+        android:layout_height="0dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/lAddr"
+        android:layout_alignBottom="@id/lAddr"
+        android:src="@drawable/ic_action_network_wifi"
+        android:contentDescription="@string/triggerSsid" />
+
+</RelativeLayout>

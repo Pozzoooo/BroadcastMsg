@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item 
+        android:id="@+id/mRecover"
+        android:title="@string/recover"
+        android:icon="@drawable/ic_action_undo"
+        android:showAsAction="always" />
+</menu>
