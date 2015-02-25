@@ -3,7 +3,7 @@ package com.pozzo.broadcast.database;
 import android.content.ContentValues;
 
 /**
- * To persist and control widgets and which WakeEntry they gonna use.
+ * To persist and control widgets and which BroadMessage they gonna use.
  * 
  * @author Luiz Gustavo Pozzo
  * @since 2014-08-10

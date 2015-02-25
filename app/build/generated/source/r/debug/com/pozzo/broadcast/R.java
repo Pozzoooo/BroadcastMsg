@@ -64,45 +64,48 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020011;
     }
     public static final class id {
-        public static final int add=0x7f0b0020;
+        public static final int add=0x7f0b0023;
         public static final int bCancel=0x7f0b0001;
         public static final int bClose=0x7f0b0007;
-        public static final int bHelpTrigger=0x7f0b0017;
+        public static final int bHelpTrigger=0x7f0b001a;
         public static final int bSend=0x7f0b0002;
-        public static final int bSsid=0x7f0b0016;
+        public static final int bSsid=0x7f0b0019;
         public static final int bWidget=0x7f0b0003;
-        public static final int eIp=0x7f0b0012;
-        public static final int eMac=0x7f0b0011;
-        public static final int eName=0x7f0b0014;
+        public static final int cbShowAdavancedSettings=0x7f0b0014;
+        public static final int eIp=0x7f0b0017;
+        public static final int eMac=0x7f0b0016;
+        public static final int eMessage=0x7f0b0012;
+        public static final int eName=0x7f0b0011;
         public static final int ePort=0x7f0b0013;
-        public static final int eTriggerSsid=0x7f0b0015;
+        public static final int eTriggerSsid=0x7f0b0018;
         public static final int fragEntryList=0x7f0b0010;
         public static final int fragLogList=0x7f0b000a;
         public static final int fragment_container=0x7f0b0000;
-        public static final int help=0x7f0b0023;
-        public static final int iTrigger=0x7f0b001d;
+        public static final int help=0x7f0b0026;
+        public static final int iTrigger=0x7f0b0020;
         public static final int lAction=0x7f0b000b;
-        public static final int lAddr=0x7f0b001c;
+        public static final int lAddr=0x7f0b001f;
         public static final int lBroadcast=0x7f0b0009;
         public static final int lDate=0x7f0b000f;
         public static final int lDescription=0x7f0b000e;
         public static final int lHow=0x7f0b000c;
         public static final int lIp=0x7f0b0008;
-        public static final int lLastSent=0x7f0b0019;
+        public static final int lLastSent=0x7f0b001c;
         public static final int lLink=0x7f0b0006;
-        public static final int lMacAddr=0x7f0b001b;
+        public static final int lMacAddr=0x7f0b001e;
         public static final int lMsg=0x7f0b0005;
-        public static final int lName=0x7f0b0018;
+        public static final int lName=0x7f0b001b;
         public static final int lTitle=0x7f0b0004;
         public static final int lWakeEntryName=0x7f0b000d;
-        public static final int lWolCount=0x7f0b001a;
-        public static final int mActionSearch=0x7f0b001e;
-        public static final int mClear=0x7f0b001f;
-        public static final int mDelete=0x7f0b0025;
-        public static final int mEdit=0x7f0b0024;
-        public static final int mRecover=0x7f0b0026;
-        public static final int showDeletedList=0x7f0b0021;
-        public static final int showLogList=0x7f0b0022;
+        public static final int lWolCount=0x7f0b001d;
+        public static final int mActionSearch=0x7f0b0021;
+        public static final int mClear=0x7f0b0022;
+        public static final int mDelete=0x7f0b0028;
+        public static final int mEdit=0x7f0b0027;
+        public static final int mRecover=0x7f0b0029;
+        public static final int showDeletedList=0x7f0b0024;
+        public static final int showLogList=0x7f0b0025;
+        public static final int vgAdvancedSettings=0x7f0b0015;
     }
     public static final class layout {
         public static final int add_wake_entry_activity=0x7f030000;
@@ -158,23 +161,25 @@ containing a value of this type.
         public static final int logList=0x7f08001e;
         public static final int macAddress=0x7f08001f;
         public static final int macNotValid=0x7f080020;
-        public static final int name=0x7f080021;
-        public static final int netBroadcast=0x7f080022;
-        public static final int port=0x7f080023;
-        public static final int readTime=0x7f080024;
-        public static final int recover=0x7f080025;
-        public static final int search=0x7f080026;
-        public static final int sort=0x7f080027;
-        public static final int triggerSsid=0x7f080028;
-        public static final int tutoCreate=0x7f080029;
-        public static final int tutoEditWake=0x7f08002a;
-        public static final int tutoHelp=0x7f08002b;
-        public static final int tutoWake=0x7f08002c;
-        public static final int valuesError=0x7f08002d;
-        public static final int wake=0x7f08002e;
-        public static final int wakeSentTo=0x7f08002f;
-        public static final int welcome=0x7f080030;
-        public static final int yourIp=0x7f080031;
+        public static final int message=0x7f080021;
+        public static final int name=0x7f080022;
+        public static final int netBroadcast=0x7f080023;
+        public static final int port=0x7f080024;
+        public static final int readTime=0x7f080025;
+        public static final int recover=0x7f080026;
+        public static final int search=0x7f080027;
+        public static final int showAdvancedSettings=0x7f080028;
+        public static final int sort=0x7f080029;
+        public static final int triggerSsid=0x7f08002a;
+        public static final int tutoCreate=0x7f08002b;
+        public static final int tutoEditWake=0x7f08002c;
+        public static final int tutoHelp=0x7f08002d;
+        public static final int tutoWake=0x7f08002e;
+        public static final int valuesError=0x7f08002f;
+        public static final int wake=0x7f080030;
+        public static final int wakeSentTo=0x7f080031;
+        public static final int welcome=0x7f080032;
+        public static final int yourIp=0x7f080033;
     }
     public static final class style {
         public static final int AppTheme=0x7f090000;
@@ -204,7 +209,7 @@ containing a value of this type.
             0x7f010000
         };
         /**
-          <p>This symbol is the offset where the {@link com.pozzo.broadcast.R.attr#font}
+          <p>This symbol is the offset where the {@link com.pozzo.wakeonlan.R.attr#font}
           attribute's value can be found in the {@link #textViewFont} array.
 
 

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.pozzo.broadcast.R;
 import com.pozzo.broadcast.database.WakeEntryCr;
 import com.pozzo.broadcast.helper.NetworkUtils;
-import com.pozzo.broadcast.vo.WakeEntry;
+import com.pozzo.broadcast.vo.BroadMessage;
 
 /**
  * How we will show our entry list.
@@ -53,7 +53,7 @@ public class WakeListAdapter extends CursorAdapter {
 
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
-		WakeEntry entry = WakeEntryCr.objectFrom(cursor);
+		BroadMessage entry = WakeEntryCr.objectFrom(cursor);
 
 		TextView lAddr = (TextView) view.findViewById(R.id.lAddr);
 		TextView lMacAddr = (TextView) view.findViewById(R.id.lMacAddr);
@@ -92,7 +92,7 @@ public class WakeListAdapter extends CursorAdapter {
 	}
 
 	@Override
-	public WakeEntry getItem(int position) {
+	public BroadMessage getItem(int position) {
 		Cursor cursor = (Cursor) super.getItem(position);
 		if(cursor == null)
 			return null;

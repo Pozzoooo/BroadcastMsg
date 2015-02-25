@@ -63,7 +63,7 @@ public class WidgetControlDao {
 	 * Get all wakeEntries ids attached to the given widget.
 	 * 
 	 * @param widgetId related.
-	 * @return WakeEntry ids.
+	 * @return BroadMessage ids.
 	 */
 	public List<Long> getWakeEntriesFromWidget(int widgetId) {
 		SQLiteDatabase db = new ConexaoDBManager().getDb();

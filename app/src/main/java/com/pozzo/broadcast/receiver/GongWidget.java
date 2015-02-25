@@ -13,11 +13,11 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.pozzo.broadcast.R;
-import com.pozzo.broadcast.business.WakeBusiness;
+import com.pozzo.broadcast.business.MessageBusiness;
 import com.pozzo.broadcast.business.WidgetControlBusiness;
 import com.pozzo.broadcast.exception.InvalidMac;
+import com.pozzo.broadcast.vo.BroadMessage;
 import com.pozzo.broadcast.vo.LogObj;
-import com.pozzo.broadcast.vo.WakeEntry;
 import com.pozzo.broadcast.vo.LogObj.Action;
 import com.pozzo.broadcast.vo.LogObj.How;
 
@@ -35,10 +35,10 @@ public class GongWidget extends AppWidgetProvider {
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 		WidgetControlBusiness bus = new WidgetControlBusiness();
-		WakeBusiness wakeBus = new WakeBusiness();
+		MessageBusiness wakeBus = new MessageBusiness();
 
 		for (int it : appWidgetIds) {
-			WakeEntry entry = null;
+			BroadMessage entry = null;
 			List<Long> entriesIds = bus.getWakeEntriesFromWidget(it);
 			if(!entriesIds.isEmpty()) {
 				//We take only the first one for naming purpouse
@@ -56,7 +56,7 @@ public class GongWidget extends AppWidgetProvider {
 	 * @param entry attached to the widget.
 	 * @param context Current context.
 	 */
-	public static void updateWidget(int widgetId, WakeEntry entry, Context context) {
+	public static void updateWidget(int widgetId, BroadMessage entry, Context context) {
 		AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 		RemoteViews remoteView = new RemoteViews(context.getPackageName(), R.layout.gong_widget);
 		Intent intent = new Intent(context, GongWidget.class);
@@ -98,13 +98,13 @@ public class GongWidget extends AppWidgetProvider {
 		@Override
 		protected String doInBackground(Long... params) {
 			try {
-				WakeBusiness wakeBus = new WakeBusiness();
-				WakeEntry entry;
+				MessageBusiness wakeBus = new MessageBusiness();
+				BroadMessage entry;
 				LogObj log;
 				for(Long it : params) {
 					entry = wakeBus.get(it);
 					log = new LogObj(How.widgetHome, it.longValue(), Action.sent);
-					wakeBus.wakeUp(entry, log);
+					wakeBus.send(entry, log);
 					publishProgress(entry.getName());
 				}
 			} catch (IOException e) {

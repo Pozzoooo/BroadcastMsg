@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="appName">Wake On Lan</string>
+    <string name="appName">Mensageria de rede</string>
     <string name="example">Examplo</string>
     <string name="wake">Acordar</string>
     <string name="add">Adicionar</string>
@@ -54,6 +54,8 @@
     <string name="netBroadcast">Broadcast</string>
     <string name="macAddress">Mac Address</string>
     <string name="triggerSsid">Disparar ao acessar</string>
+    <string name="showAdvancedSettings">Configurações avançadas</string>
+    <string name="message">Mensagem</string>
 
 <!--     Help -->
 	<string name="helpMsg">Para que o aplicativo funcione, é preciso que seja previamente 

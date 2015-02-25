@@ -5,7 +5,7 @@ import java.util.Date;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.pozzo.broadcast.vo.WakeEntry;
+import com.pozzo.broadcast.vo.BroadMessage;
 
 /**
  * We kind of represents our object table here, and make some helpers for manipulation.
@@ -46,7 +46,7 @@ public class WakeEntryCr {
 	/**
 	 * @return ContentValues for given entry.
 	 */
-	public static ContentValues getContentValues(WakeEntry entry) {
+	public static ContentValues getContentValues(BroadMessage entry) {
 		ContentValues values = new ContentValues();
 
 		if(entry.getId() != 0)
@@ -74,8 +74,8 @@ public class WakeEntryCr {
 	/**
 	 * @return Object contained on current position of given cursor.
 	 */
-	public static WakeEntry objectFrom(Cursor cursor) {
-		WakeEntry entry = new WakeEntry();
+	public static BroadMessage objectFrom(Cursor cursor) {
+		BroadMessage entry = new BroadMessage();
 
 		entry.setId(cursor.getInt(cursor.getColumnIndex(_ID)));
 		entry.setMacAddress(cursor.getString(cursor.getColumnIndex(MAC_ADDRESS)));

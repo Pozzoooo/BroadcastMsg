@@ -12,13 +12,13 @@ import android.net.ConnectivityManager;
 import android.util.Log;
 
 import com.bugsense.trace.BugSenseHandler;
-import com.pozzo.broadcast.business.WakeBusiness;
+import com.pozzo.broadcast.business.MessageBusiness;
 import com.pozzo.broadcast.exception.InvalidMac;
 import com.pozzo.broadcast.helper.NetworkUtils;
+import com.pozzo.broadcast.vo.BroadMessage;
 import com.pozzo.broadcast.vo.LogObj;
 import com.pozzo.broadcast.vo.LogObj.Action;
 import com.pozzo.broadcast.vo.LogObj.How;
-import com.pozzo.broadcast.vo.WakeEntry;
 
 
 /**
@@ -39,13 +39,13 @@ public class NetworkConnectionReceiver extends BroadcastReceiver {
 		if(!noConnectivity && networkSsid != null) {
 			Thread background = new Thread() {
 				public void run() {
-					WakeBusiness wakeBus = new WakeBusiness();
-					List<WakeEntry> entries = wakeBus.getByTrigger(networkSsid);
-					for(WakeEntry it : entries) {
+					MessageBusiness wakeBus = new MessageBusiness();
+					List<BroadMessage> entries = wakeBus.getByTrigger(networkSsid);
+					for(BroadMessage it : entries) {
 						try {
 							LogObj log = new LogObj(
 									How.trigged, it.getId(), Action.sent);
-							wakeBus.wakeUp(it, log);
+							wakeBus.send(it, log);
 						} catch (IOException e) {
 							Log.e("IO", it.getName() + " " + e.getMessage());
 							BugSenseHandler.sendException(e);

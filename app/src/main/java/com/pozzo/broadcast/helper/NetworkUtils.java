@@ -26,7 +26,7 @@ public class NetworkUtils {
 	 * We cannot trust our user, I know they do the best they can, but you know they are good in 
 	 * 	not doing what we expect.
 	 * 
-	 * @param mac to be checked.
+	 * @param macStr to be checked.
 	 * @return false if not a valid mac.
 	 */
 	public boolean isValidMac(String macStr) {
@@ -46,7 +46,7 @@ public class NetworkUtils {
 	 * @return 9 probably.
 	 */
 	public static int getDefaultWakePort() {
-		return 9;
+		return 80;
 	}
 
 	/**

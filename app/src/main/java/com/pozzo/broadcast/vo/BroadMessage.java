@@ -1,15 +1,17 @@
 package com.pozzo.broadcast.vo;
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * The infos we need to wake a machine.
+ * What a user will save to send on network.
  * 
  * @author Luiz Gustavo Pozzo
  * @since 2014-05-03
  */
-public class WakeEntry implements Serializable {
+public class BroadMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private long id;
@@ -21,6 +23,7 @@ public class WakeEntry implements Serializable {
 	private Date deletedDate;
 	private Date lastWolSentDate;
 	private int wolCount;
+	private String message;
 
 	public void setId(long id) {
 		this.id = id;
@@ -76,6 +79,13 @@ public class WakeEntry implements Serializable {
 	public int getWolCount() {
 		return wolCount;
 	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	/**
 	 * @return new value.
 	 */

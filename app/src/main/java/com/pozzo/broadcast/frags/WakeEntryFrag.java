@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -19,7 +21,7 @@ import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.pozzo.broadcast.R;
 import com.pozzo.broadcast.helper.NetworkUtils;
-import com.pozzo.broadcast.vo.WakeEntry;
+import com.pozzo.broadcast.vo.BroadMessage;
 
 /**
  * Fragment which should register a new Mac to our database. 
@@ -28,7 +30,7 @@ import com.pozzo.broadcast.vo.WakeEntry;
  * @since 2014-05-03
  */
 public class WakeEntryFrag extends Fragment {
-	private WakeEntry entry;
+	private BroadMessage entry;
 	private NetworkUtils utils;
 
 	private EditText eMac;
@@ -36,6 +38,8 @@ public class WakeEntryFrag extends Fragment {
 	private EditText ePort;
 	private EditText eName;
 	private EditText eTrigger;
+	private EditText eMessage;
+	private ViewGroup vgAdvancedSettings;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -64,9 +68,12 @@ public class WakeEntryFrag extends Fragment {
 		ePort = (EditText) contentView.findViewById(R.id.ePort);
 		eName = (EditText) contentView.findViewById(R.id.eName);
 		eTrigger = (EditText) contentView.findViewById(R.id.eTriggerSsid);
+		eMessage = (EditText) contentView.findViewById(R.id.eMessage);
 
 		ImageButton bHelpTrigger = (ImageButton) contentView.findViewById(R.id.bHelpTrigger);
 		ImageButton bSsid = (ImageButton) contentView.findViewById(R.id.bSsid);
+		CheckBox cbShowAdavancedSettings =
+				(CheckBox) contentView.findViewById(R.id.cbShowAdavancedSettings);
 
 		fillLayout();
 
@@ -74,9 +81,18 @@ public class WakeEntryFrag extends Fragment {
 
 		bHelpTrigger.setOnClickListener(onHelpTrigger);
 		bSsid.setOnClickListener(onGetSsid);
+		cbShowAdavancedSettings.setOnCheckedChangeListener(onShowAdavancedSettings);
 
 		return contentView;
 	}
+
+	private CompoundButton.OnCheckedChangeListener onShowAdavancedSettings =
+			new CompoundButton.OnCheckedChangeListener() {
+		@Override
+		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+			vgAdvancedSettings.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+		}
+	};
 
 	/**
 	 * To help user understand it.
@@ -108,7 +124,7 @@ public class WakeEntryFrag extends Fragment {
 	/**
 	 * @return The entry.
 	 */
-	public WakeEntry getWakeEntry() {
+	public BroadMessage getWakeEntry() {
 		updateObj();
 		return entry;
 	}
@@ -118,12 +134,13 @@ public class WakeEntryFrag extends Fragment {
 	 */
 	private void updateObj() {
 		if(entry == null)
-			entry = new WakeEntry();
+			entry = new BroadMessage();
 
 		entry.setMacAddress(eMac.getText().toString());
 		entry.setIp(eIp.getText().toString());
 		entry.setName(eName.getText().toString());
 		entry.setTriggerSsid(eTrigger.getText().toString());
+		entry.setMessage(eMessage.getText().toString());
 
 		try {
 			entry.setPort(Integer.parseInt(ePort.getText().toString()));
@@ -167,7 +184,7 @@ public class WakeEntryFrag extends Fragment {
 	/**
 	 * Builder.
 	 */
-	public static WakeEntryFrag newWakeEntryFrag(WakeEntry entry) {
+	public static WakeEntryFrag newWakeEntryFrag(BroadMessage entry) {
 		WakeEntryFrag instance = new WakeEntryFrag();
 
 		Bundle state = new Bundle();
@@ -181,7 +198,7 @@ public class WakeEntryFrag extends Fragment {
 	 * Center restore state.
 	 */
 	public void restoreInstance(Bundle state) {
-		entry = (WakeEntry) state.getSerializable("entry");
+		entry = (BroadMessage) state.getSerializable("entry");
 	}
 
 	@Override
@@ -195,7 +212,7 @@ public class WakeEntryFrag extends Fragment {
 	 */
 	private void fillLayout() {
 		if(entry == null) {
-			entry = new WakeEntry();
+			entry = new BroadMessage();
 			entry.setPort(NetworkUtils.getDefaultWakePort());
 			try {
 				InetAddress myBroad = utils.getMyBroadcast();
@@ -212,5 +229,6 @@ public class WakeEntryFrag extends Fragment {
 		ePort.setText("" + entry.getPort());
 		eIp.setText(entry.getIp());
 		eTrigger.setText(entry.getTriggerSsid());
+		eMessage.setText(entry.getMessage());
 	}
 }

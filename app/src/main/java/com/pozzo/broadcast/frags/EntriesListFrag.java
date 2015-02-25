@@ -33,17 +33,17 @@ import com.pozzo.broadcast.R;
 import com.pozzo.broadcast.activity.AddWakeEntryActivity;
 import com.pozzo.broadcast.activity.MainActivity;
 import com.pozzo.broadcast.adapter.WakeListAdapter;
-import com.pozzo.broadcast.business.WakeBusiness;
+import com.pozzo.broadcast.business.MessageBusiness;
 import com.pozzo.broadcast.database.ConexaoDBManager;
 import com.pozzo.broadcast.database.WakeEntryCr;
 import com.pozzo.broadcast.exception.InvalidMac;
 import com.pozzo.broadcast.helper.NetworkUtils;
 import com.pozzo.broadcast.listener.SwipeDismissListViewTouchListener;
 import com.pozzo.broadcast.loder.SimpleCursorLoader;
+import com.pozzo.broadcast.vo.BroadMessage;
 import com.pozzo.broadcast.vo.LogObj;
 import com.pozzo.broadcast.vo.LogObj.Action;
 import com.pozzo.broadcast.vo.LogObj.How;
-import com.pozzo.broadcast.vo.WakeEntry;
 
 /**
  * Shows and manage Entry lists.
@@ -53,7 +53,7 @@ import com.pozzo.broadcast.vo.WakeEntry;
  * @author Luiz Gustavo Pozzo
  * @since 2014-05-03
  * @see WakeListAdapter
- * @see WakeEntry
+ * @see com.pozzo.broadcast.vo.BroadMessage
  */
 public class EntriesListFrag extends ListFragment 
 		implements OnQueryTextListener, LoaderCallbacks<Cursor> {
@@ -164,7 +164,7 @@ public class EntriesListFrag extends ListFragment
 	 * Remove all checked items on ListView.
 	 */
 	private void deleteCheckedItems(long... ids) {
-		new WakeBusiness().trash(ids);
+		new MessageBusiness().trash(ids);
 		refresh();
 	}
 
@@ -172,7 +172,7 @@ public class EntriesListFrag extends ListFragment
 	 * Recover deleted items back to normal lits.
 	 */
 	private void recoverCheckedItems(long... ids) {
-		new WakeBusiness().recover(ids);
+		new MessageBusiness().recover(ids);
 		refresh();
 	}
 
@@ -182,8 +182,8 @@ public class EntriesListFrag extends ListFragment
 	 * @param itemId to be edited.
 	 */
 	private void edit(int itemId) {
-		WakeBusiness bus = new WakeBusiness();
-		WakeEntry entry = bus.get(itemId);
+		MessageBusiness bus = new MessageBusiness();
+		BroadMessage entry = bus.get(itemId);
 		Intent intent = new Intent(getActivity(), AddWakeEntryActivity.class);
 		intent.putExtra(AddWakeEntryActivity.PARAM_WAKE_ENTRY, entry);
 		startActivity(intent);
@@ -195,7 +195,7 @@ public class EntriesListFrag extends ListFragment
 	private OnItemClickListener onSendWake = new OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			WakeEntry entry = (WakeEntry) getListAdapter().getItem(position);
+			BroadMessage entry = (BroadMessage) getListAdapter().getItem(position);
 			wake(entry);
 		}
 	};
@@ -206,7 +206,7 @@ public class EntriesListFrag extends ListFragment
 	private OnItemClickListener onChioce = new OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			WakeEntry entry = (WakeEntry) getListAdapter().getItem(position);
+			BroadMessage entry = (BroadMessage) getListAdapter().getItem(position);
 
 			//TODO It usually is done at onAttach method, is this acceptable?
 			if(!(getActivity() instanceof MainActivity)) {
@@ -223,14 +223,14 @@ public class EntriesListFrag extends ListFragment
 	/**
 	 * Ok, User wants to wake something UP, lets do it!
 	 */
-	private void wake(final WakeEntry entry) {
+	private void wake(final BroadMessage entry) {
 		new AsyncTask<Void, Void, Integer>() {
 
 			@Override
 			protected Integer doInBackground(Void... params) {
 				try {
 					LogObj log = new LogObj(How.defaul, entry.getId(), Action.sent);
-					new WakeBusiness().wakeUp(entry, log);
+					new MessageBusiness().send(entry, log);
 				} catch (IOException e) {
 					return R.string.ioSentError;
 				} catch (InvalidMac e) {
@@ -323,7 +323,7 @@ public class EntriesListFrag extends ListFragment
                     public void onDismiss(ListView listView, final int[] reverseSortedPositions) {
                         new AsyncTask<Void, Void, Void>() {
                         	protected Void doInBackground(Void... params) {
-                        		WakeBusiness bus = new WakeBusiness();
+                        		MessageBusiness bus = new MessageBusiness();
                         		WakeListAdapter adapter = (WakeListAdapter) getListAdapter();
                         		for(int it : reverseSortedPositions) {
                         			bus.trash(adapter.getItem(it).getId());

@@ -10,19 +10,20 @@ import com.bugsense.trace.BugSenseHandler;
 import com.pozzo.broadcast.App;
 import com.pozzo.broadcast.dao.WakeEntryDao;
 import com.pozzo.broadcast.exception.InvalidMac;
+import com.pozzo.broadcast.helper.MessageSender;
 import com.pozzo.broadcast.helper.WakeOnLan;
 import com.pozzo.broadcast.receiver.NetworkConnectionReceiver;
+import com.pozzo.broadcast.vo.BroadMessage;
 import com.pozzo.broadcast.vo.LogObj;
 import com.pozzo.broadcast.vo.LogObj.Action;
-import com.pozzo.broadcast.vo.WakeEntry;
 
 /**
- * Business logic for our {@link WakeEntry}.
+ * Business logic for our {@link com.pozzo.broadcast.vo.BroadMessage}.
  * 
  * @author Luiz Gustavo Pozzo
  * @since 2014-05-03
  */
-public class WakeBusiness {
+public class MessageBusiness {
 
 	/**
 	 * It inserts a new entry or replaces if the id already exists.
@@ -30,7 +31,7 @@ public class WakeBusiness {
 	 * @param entry to be inserted.
 	 * @param context to start listening network change if needed.
 	 */
-	public void replace(WakeEntry entry, Context context) {
+	public void replace(BroadMessage entry, Context context) {
 		long id = new WakeEntryDao().replace(entry);
 		if(id > (Integer.MAX_VALUE/2))//Just for precaution
 			BugSenseHandler.sendException(new Exception("They have already really big ids"));
@@ -73,8 +74,8 @@ public class WakeBusiness {
 	 * @throws IOException Problem to send package.
 	 * @throws InvalidMac Not valid MAC.
 	 */
-	public void wakeUp(WakeEntry entry, LogObj log) throws IOException, InvalidMac {
-		new WakeOnLan().wakeUp(entry.getIp(), entry.getMacAddress(), entry.getPort());
+	public void send(BroadMessage entry, LogObj log) throws IOException, InvalidMac {
+		new MessageSender().send(entry);
 		new LogBusiness().insert(log);
 		markNewSent(entry);
 	}
@@ -84,19 +85,19 @@ public class WakeBusiness {
 	 * 
 	 * @param entry to be marker with a +1 count.
 	 */
-	public void markNewSent(WakeEntry entry) {
+	public void markNewSent(BroadMessage entry) {
 		entry.setLastWolSentDate(new Date());
 		entry.increasCount();
 		replace(entry, App.getAppContext());
 	}
 
 	/**
-	 * Get all {@link WakeEntry} objects which match givven trigger.
+	 * Get all {@link com.pozzo.broadcast.vo.BroadMessage} objects which match givven trigger.
 	 * 
 	 * @param trigger to be matched.
 	 * @return a list of all matched entries.
 	 */
-	public List<WakeEntry> getByTrigger(String trigger) {
+	public List<BroadMessage> getByTrigger(String trigger) {
 		return new WakeEntryDao().getByTrigger(trigger);
 	}
 
@@ -113,7 +114,7 @@ public class WakeBusiness {
 	 * @param id PK.
 	 * @return the Entry.
 	 */
-	public WakeEntry get(long id) {
+	public BroadMessage get(long id) {
 		return new WakeEntryDao().get(id);
 	}
 

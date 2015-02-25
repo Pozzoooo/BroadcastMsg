@@ -15,13 +15,13 @@ import android.widget.SearchView.OnQueryTextListener;
 
 import com.bugsense.trace.BugSenseHandler;
 import com.pozzo.broadcast.R;
-import com.pozzo.broadcast.business.WakeBusiness;
+import com.pozzo.broadcast.business.MessageBusiness;
 import com.pozzo.broadcast.business.WidgetControlBusiness;
 import com.pozzo.broadcast.database.WakeEntryCr;
 import com.pozzo.broadcast.frags.EntriesListFrag;
 import com.pozzo.broadcast.frags.HelpDialog;
 import com.pozzo.broadcast.receiver.GongWidget;
-import com.pozzo.broadcast.vo.WakeEntry;
+import com.pozzo.broadcast.vo.BroadMessage;
 
 /**
  * Well, this is our Main Activity =D.
@@ -51,7 +51,7 @@ public class MainActivity extends Activity implements OnQueryTextListener {
 
 		checkEmptiness();
 
-		new WakeBusiness().startNetworkService(this);
+		new MessageBusiness().startNetworkService(this);
 
 		Bundle extras = getIntent().getExtras();
 		if(extras != null)
@@ -160,7 +160,7 @@ public class MainActivity extends Activity implements OnQueryTextListener {
 				try {
 					SharedPreferences pref = getSharedPreferences("configs", MODE_PRIVATE);
 					if(pref.getBoolean("firstTimeMainActivity", true)) {
-						if(new WakeBusiness().isEmpty()) {
+						if(new MessageBusiness().isEmpty()) {
 							return true;
 						}
 					}
@@ -183,14 +183,14 @@ public class MainActivity extends Activity implements OnQueryTextListener {
 	 * 
 	 * @param entry to be wakened on widget event
 	 */
-	public void widgetSelection(WakeEntry ...entry) {
+	public void widgetSelection(BroadMessage...entry) {
 		/*
 		 * This approach actually give me a little of doubt, testing on my Nexus 4 with Android 4.4
 		 *  I could run it all on main thread, but it don't seems the correct approach for a 
 		 *  database operation, but also, it get little weird because I need it to be done exactly 
 		 *  now to give no delays for user choice.
 		 */
-		new AsyncTask<WakeEntry, Void, WakeEntry>() {
+		new AsyncTask<BroadMessage, Void, BroadMessage>() {
 			private int appWidgetId;
 
 			@Override
@@ -202,13 +202,13 @@ public class MainActivity extends Activity implements OnQueryTextListener {
 			}
 
 			@Override
-			protected WakeEntry doInBackground(WakeEntry... entry) {
+			protected BroadMessage doInBackground(BroadMessage... entry) {
 				//We insert widget relations for later use on widget event 
 				new WidgetControlBusiness().insert(appWidgetId, entry);
 				return entry[0];
 			}
 
-			protected void onPostExecute(WakeEntry entry) {
+			protected void onPostExecute(BroadMessage entry) {
 				//Refresh widget
 				GongWidget.updateWidget(appWidgetId, entry, MainActivity.this);
 

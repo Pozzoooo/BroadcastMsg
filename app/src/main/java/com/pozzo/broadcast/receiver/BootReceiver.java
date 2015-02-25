@@ -1,6 +1,6 @@
 package com.pozzo.broadcast.receiver;
 
-import com.pozzo.broadcast.business.WakeBusiness;
+import com.pozzo.broadcast.business.MessageBusiness;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -19,7 +19,7 @@ public class BootReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		//Business will decide if it really starts or not, but anyway we should not be here if not.
-		new WakeBusiness().startNetworkService(context);
+		new MessageBusiness().startNetworkService(context);
 	}
 
 	/**

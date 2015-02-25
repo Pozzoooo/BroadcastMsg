@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.bugsense.trace.BugSenseHandler;
 import com.pozzo.broadcast.dao.WidgetControlDao;
+import com.pozzo.broadcast.vo.BroadMessage;
 import com.pozzo.broadcast.vo.LogObj;
-import com.pozzo.broadcast.vo.WakeEntry;
 import com.pozzo.broadcast.vo.LogObj.Action;
 import com.pozzo.broadcast.vo.LogObj.How;
 
@@ -23,7 +23,7 @@ public class WidgetControlBusiness {
 	 * @param widgetId added.
 	 * @param wakeEntryId related to the given widget.
 	 */
-	public void insert(int widgetId, WakeEntry ...wakeEntries) {
+	public void insert(int widgetId, BroadMessage...wakeEntries) {
 		long[] ids = new long[wakeEntries.length];
 		for(int i=0; i<wakeEntries.length; ++i)
 			ids[i] = wakeEntries[i].getId();
@@ -31,7 +31,7 @@ public class WidgetControlBusiness {
 		new WidgetControlDao().insert(widgetId, ids);
 
 		//And than log it pleas.
-		for(WakeEntry it : wakeEntries)
+		for(BroadMessage it : wakeEntries)
 			new LogBusiness().insert(//I do save widget id as description, just for reference.
 					new LogObj(How.widgetHome, ""+widgetId, it.getId(), Action.newHomeWidget));
 	}
@@ -64,7 +64,7 @@ public class WidgetControlBusiness {
 	 * Get all wakeEntries ids attached to the given widget.
 	 * 
 	 * @param widgetId related.
-	 * @return WakeEntry ids.
+	 * @return BroadMessage ids.
 	 */
 	public List<Long> getWakeEntriesFromWidget(int widgetId) {
 		return new WidgetControlDao().getWakeEntriesFromWidget(widgetId);

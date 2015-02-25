@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="appName">Wake On Lan</string>
+    <string name="appName">Broadcast Message</string>
     <string name="example">Example</string>
     <string name="wake">Wake</string>
     <string name="add">Add</string>
@@ -54,6 +54,8 @@
     <string name="netBroadcast">Broadcast</string>
     <string name="macAddress">MAC Address</string>
     <string name="triggerSsid">Trigger on network</string>
+    <string name="showAdvancedSettings">Show Advanced Settings</string>
+    <string name="message">Message</string>
 
 <!--     Help -->
 	<string name="helpMsg">You need to pre-configure desired machine(s) to 
