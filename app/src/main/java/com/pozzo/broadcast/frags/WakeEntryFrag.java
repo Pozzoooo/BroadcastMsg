@@ -3,7 +3,10 @@ package com.pozzo.broadcast.frags;
 import java.net.InetAddress;
 import java.net.SocketException;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -41,6 +44,15 @@ public class WakeEntryFrag extends Fragment {
 	private EditText eMessage;
 	private ViewGroup vgAdvancedSettings;
 
+	//Pre-configs
+	private boolean showAdvanced;
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		loadPreferences(activity);
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,6 +81,7 @@ public class WakeEntryFrag extends Fragment {
 		eName = (EditText) contentView.findViewById(R.id.eName);
 		eTrigger = (EditText) contentView.findViewById(R.id.eTriggerSsid);
 		eMessage = (EditText) contentView.findViewById(R.id.eMessage);
+		vgAdvancedSettings = (ViewGroup) contentView.findViewById(R.id.vgAdvancedSettings);
 
 		ImageButton bHelpTrigger = (ImageButton) contentView.findViewById(R.id.bHelpTrigger);
 		ImageButton bSsid = (ImageButton) contentView.findViewById(R.id.bSsid);
@@ -76,6 +89,9 @@ public class WakeEntryFrag extends Fragment {
 				(CheckBox) contentView.findViewById(R.id.cbShowAdavancedSettings);
 
 		fillLayout();
+
+		showAdvanced(showAdvanced);
+		cbShowAdavancedSettings.setChecked(showAdvanced);
 
 		eMac.setOnFocusChangeListener(onMacDone);
 
@@ -86,13 +102,56 @@ public class WakeEntryFrag extends Fragment {
 		return contentView;
 	}
 
+	@Override
+	public void onStop() {
+		super.onStop();
+		savePreferences(getActivity());
+	}
+
+	/**
+	 * We are going to use some preferences to create a more personalized interface to user.
+	 *
+	 * @param context to get preferences.
+	 */
+	private void loadPreferences(Context context) {
+		SharedPreferences prefs = context.getSharedPreferences(
+				context.getString(R.string.pref_addScreen), Context.MODE_PRIVATE);
+
+		showAdvanced = prefs.getBoolean(context.getString(R.string.key_showAdvanced), false);
+	}
+
+	/**
+	 * Apply chagens to preferences.
+	 * TODO Any sophisticated way to not apply when there is no change, without flag or verification.
+	 *
+	 * @param context to set preferences.
+	 */
+	private void savePreferences(Context context) {
+		SharedPreferences.Editor prefs = context.getSharedPreferences(
+				context.getString(R.string.pref_addScreen), Context.MODE_PRIVATE).edit();
+
+		prefs.putBoolean(context.getString(R.string.key_showAdvanced), showAdvanced);
+
+		prefs.apply();
+	}
+
 	private CompoundButton.OnCheckedChangeListener onShowAdavancedSettings =
 			new CompoundButton.OnCheckedChangeListener() {
 		@Override
 		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-			vgAdvancedSettings.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+			showAdvanced(isChecked);
 		}
 	};
+
+	/**
+	 * It does not change checkbox.
+	 *
+	 * @param show the advanced settings.
+	 */
+	private void showAdvanced(boolean show) {
+		showAdvanced = show;
+		vgAdvancedSettings.setVisibility(show ? View.VISIBLE : View.GONE);
+	}
 
 	/**
 	 * To help user understand it.

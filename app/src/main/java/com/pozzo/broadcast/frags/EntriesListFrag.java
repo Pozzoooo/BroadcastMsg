@@ -48,7 +48,7 @@ import com.pozzo.broadcast.vo.LogObj.How;
 /**
  * Shows and manage Entry lists.
  * 
- * @param MainActivity.PARAM_SHOW_DELETEDS to show only deletes.
+ * MainActivity.PARAM_SHOW_DELETEDS to show only deletes.
  * 
  * @author Luiz Gustavo Pozzo
  * @since 2014-05-03
@@ -316,7 +316,7 @@ public class EntriesListFrag extends ListFragment
                 new SwipeDismissListViewTouchListener.DismissCallbacks() {
                     @Override
                     public boolean canDismiss(int position) {
-                        return !showDeleteds;//TODO why do you reset the position?
+                        return false;//!showDeleteds;//TODO why do you reset the position?
                     }
 
                     @Override

@@ -158,28 +158,30 @@ containing a value of this type.
         public static final int howWidgetHome=0x7f08001b;
         public static final int ioSentError=0x7f08001c;
         public static final int ip=0x7f08001d;
-        public static final int logList=0x7f08001e;
-        public static final int macAddress=0x7f08001f;
-        public static final int macNotValid=0x7f080020;
-        public static final int message=0x7f080021;
-        public static final int name=0x7f080022;
-        public static final int netBroadcast=0x7f080023;
-        public static final int port=0x7f080024;
-        public static final int readTime=0x7f080025;
-        public static final int recover=0x7f080026;
-        public static final int search=0x7f080027;
-        public static final int showAdvancedSettings=0x7f080028;
-        public static final int sort=0x7f080029;
-        public static final int triggerSsid=0x7f08002a;
-        public static final int tutoCreate=0x7f08002b;
-        public static final int tutoEditWake=0x7f08002c;
-        public static final int tutoHelp=0x7f08002d;
-        public static final int tutoWake=0x7f08002e;
-        public static final int valuesError=0x7f08002f;
-        public static final int wake=0x7f080030;
-        public static final int wakeSentTo=0x7f080031;
-        public static final int welcome=0x7f080032;
-        public static final int yourIp=0x7f080033;
+        public static final int key_showAdvanced=0x7f08001e;
+        public static final int logList=0x7f08001f;
+        public static final int macAddress=0x7f080020;
+        public static final int macNotValid=0x7f080021;
+        public static final int message=0x7f080022;
+        public static final int name=0x7f080023;
+        public static final int netBroadcast=0x7f080024;
+        public static final int port=0x7f080025;
+        public static final int pref_addScreen=0x7f080026;
+        public static final int readTime=0x7f080027;
+        public static final int recover=0x7f080028;
+        public static final int search=0x7f080029;
+        public static final int showAdvancedSettings=0x7f08002a;
+        public static final int sort=0x7f08002b;
+        public static final int triggerSsid=0x7f08002c;
+        public static final int tutoCreate=0x7f08002d;
+        public static final int tutoEditWake=0x7f08002e;
+        public static final int tutoHelp=0x7f08002f;
+        public static final int tutoWake=0x7f080030;
+        public static final int valuesError=0x7f080031;
+        public static final int wake=0x7f080032;
+        public static final int wakeSentTo=0x7f080033;
+        public static final int welcome=0x7f080034;
+        public static final int yourIp=0x7f080035;
     }
     public static final class style {
         public static final int AppTheme=0x7f090000;
@@ -201,7 +203,7 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #textViewFont_font com.pozzo.wakeonlan:font}</code></td><td></td></tr>
+           <tr><td><code>{@link #textViewFont_font com.pozzo.broadcast:font}</code></td><td></td></tr>
            </table>
            @see #textViewFont_font
          */
@@ -209,7 +211,7 @@ containing a value of this type.
             0x7f010000
         };
         /**
-          <p>This symbol is the offset where the {@link com.pozzo.wakeonlan.R.attr#font}
+          <p>This symbol is the offset where the {@link com.pozzo.broadcast.R.attr#font}
           attribute's value can be found in the {@link #textViewFont} array.
 
 
@@ -219,7 +221,7 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.pozzo.wakeonlan:font
+          @attr name com.pozzo.broadcast:font
         */
         public static final int textViewFont_font = 0;
     };
